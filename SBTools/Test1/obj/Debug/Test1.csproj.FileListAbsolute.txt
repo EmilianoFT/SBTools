@@ -1,0 +1,8 @@
+c:\users\puflito\documents\visual studio 2013\Projects\SBTools\Test1\bin\Debug\Test1.exe.config
+c:\users\puflito\documents\visual studio 2013\Projects\SBTools\Test1\bin\Debug\Test1.exe
+c:\users\puflito\documents\visual studio 2013\Projects\SBTools\Test1\bin\Debug\Test1.pdb
+c:\users\puflito\documents\visual studio 2013\Projects\SBTools\Test1\bin\Debug\SBUtils.dll
+c:\users\puflito\documents\visual studio 2013\Projects\SBTools\Test1\bin\Debug\SBUtils.pdb
+c:\users\puflito\documents\visual studio 2013\Projects\SBTools\Test1\obj\Debug\Test1.csprojResolveAssemblyReference.cache
+c:\users\puflito\documents\visual studio 2013\Projects\SBTools\Test1\obj\Debug\Test1.exe
+c:\users\puflito\documents\visual studio 2013\Projects\SBTools\Test1\obj\Debug\Test1.pdb
