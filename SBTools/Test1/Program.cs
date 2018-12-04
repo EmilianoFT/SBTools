@@ -10,17 +10,37 @@ namespace Test1
 {
     class Program
     {
+        static System.IO.StreamWriter file;
+
+        static long counter;
+
         static void Main(string[] args)
         {
-            for (int Count = 3; Count <= 15; Count++)
+            file = new System.IO.StreamWriter(@"D:\GenList.txt", true);
+            counter = 0;
+
+            Console.WriteLine("Init GenList");
+            for (int Count = 0; Count <= 4; Count++)
             {
-                GenerateDictionary.Recurse(Count, 0, "", (GenerateDictionary.StrFooBarDelegate)WL);
+                Console.WriteLine("GenList Length: " + Count.ToString());
+                GenerateDictionary.Recurse(Count, 0, "", (GenerateDictionary.StrFooBarDelegate)WL, GenerateDictionary.MatchAlphaNumericMin);
             }
+            file.Flush();
+            file.Close();
+            Console.WriteLine("End GenList");
         }
 
         public static bool WL(string data)
         {
-            Console.WriteLine(data);
+            counter++;
+
+            if (counter > 100000)
+            {
+                counter = 0;
+                Console.WriteLine("GenList: " + data);
+            }
+
+            file.WriteLine(data);
             return false;
         }
     }
