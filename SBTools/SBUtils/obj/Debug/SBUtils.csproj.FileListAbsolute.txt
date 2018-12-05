@@ -1,5 +1,0 @@
-c:\users\puflito\documents\visual studio 2013\Projects\SBTools\SBUtils\obj\Debug\SBUtils.csprojResolveAssemblyReference.cache
-c:\users\puflito\documents\visual studio 2013\Projects\SBTools\SBUtils\bin\Debug\SBUtils.dll
-c:\users\puflito\documents\visual studio 2013\Projects\SBTools\SBUtils\bin\Debug\SBUtils.pdb
-c:\users\puflito\documents\visual studio 2013\Projects\SBTools\SBUtils\obj\Debug\SBUtils.dll
-c:\users\puflito\documents\visual studio 2013\Projects\SBTools\SBUtils\obj\Debug\SBUtils.pdb

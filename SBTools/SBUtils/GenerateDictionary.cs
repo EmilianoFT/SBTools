@@ -6,45 +6,32 @@ using System.Threading.Tasks;
 
 namespace SBUtils
 {
-    public static class GenerateDictionary
+    public class GenerateDictionary
     {
-        public delegate bool StrFooBarDelegate(string data);
+        
+        public void Recurse(int Length, int Position, string BaseString, StrFooBarDelegate Process, char[] Match)
+        {
+            Recurse(new WLData() { Length = Length, Position = Position, InitialCount = 0, BaseString = BaseString, Process = Process, Match = Match });
+        }
 
-        public static char[] MatchAlpha =            {'a','b','c','d','e','f','g','h','i','j' ,'k','l','m','n','o','p',
-                        'q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','C','L','M','N','O','P',
-                        'Q','R','S','T','U','V','X','Y','Z'};
-
-        public static char[] MatchNumeric =            {'0','1','2','3','4','5','6','7','8','9'};
-
-        public static char[] MatchAlphaNumericMin =            {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j' ,'k','l','m','n','o','p',
-                        'q','r','s','t','u','v','w','x','y','z'};
-
-        public static char[] MatchAlphaNumeric =            {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j' ,'k','l','m','n','o','p',
-                        'q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','C','L','M','N','O','P',
-                        'Q','R','S','T','U','V','X','Y','Z'};
-
-        public static char[] MatchFull =            {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j' ,'k','l','m','n','o','p',
-                        'q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','C','L','M','N','O','P',
-                        'Q','R','S','T','U','V','X','Y','Z','!','?',' ','*','-','+','_','@','.',',',';',':','$','&','#','<','>','/','\\'};
-
-        public static void Recurse(int Lenght, int Position, string BaseString, StrFooBarDelegate Process, char[] Match )
+        public void Recurse(WLData WordListData)
         {
             char[] match;
             int Count = 0;
-            match = Match;
+            match = WordListData.Match;
             if (match == null)
-                match = MatchFull;
+                match = SBStaticData.MatchFull;
 
-            for (Count = 0; Count < match.Length; Count++)
+            for (Count = WordListData.InitialCount; Count < match.Length; Count++)
             {
-                if (Position < Lenght - 1)
+                if (WordListData.Position < WordListData.Length - 1)
                 {
-                    Recurse(Lenght, Position + 1, BaseString + match[Count], Process, match);
+                    Recurse(new WLData() { Length = WordListData.Length, Position = WordListData.Position + 1, InitialCount = WordListData.InitialCount, BaseString = String.Copy(WordListData.BaseString + match[Count]), Process = WordListData.Process, Match = WordListData.Match });
                 }
 
-                if (BaseString.Length == Lenght - 1)
+                if (WordListData.BaseString.Length == WordListData.Length - 1)
                 {
-                    if (Process(BaseString + match[Count]))
+                    if (WordListData.Process(WordListData.BaseString + match[Count]))
                         break;
                 }
             }
